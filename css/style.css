@@ -33,12 +33,12 @@
 }
 
 .center .cell-fill {
-    fill: gold;
+    fill: #f7da21;
 }
 
 .cell-fill {
     cursor: pointer;
-    fill: silver;
+    fill: #e6e6e6;;
     transition: all 100ms;
 }
 
