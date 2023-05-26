@@ -68,7 +68,7 @@
     <script>
         window.addEventListener("keydown", e => {
                 e.preventDefault()
-                if(65 <= e.keyCode <= 90) {
+                if(65 <= e.keyCode && e.keyCode <= 90) {
                     textNode = window.getSelection().anchorNode
                     console.log(window.getSelection())
                     textNode.textContent = e.key
