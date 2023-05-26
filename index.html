@@ -17,11 +17,14 @@
 <body>
     <!-- below code sourced from the nytimes.com website -->
     <div class="sb-controls">
-        <div class="hive">
-            <svg class="hive-cell center" viewBox="0 0 120 103.92304845413263" data-testid="hive-cell">
+        <div class="hive" contenteditable="true">
+            <svg class="hive-cell center" contenteditable="true" viewBox="0 0 120 103.92304845413263" data-testid="hive-cell">
                 <polygon class="cell-fill"
                     points="0,51.96152422706631 30,0 90,0 120,51.96152422706631 90,103.92304845413263 30,103.92304845413263"
                     stroke="white" stroke-width="7.5"></polygon><text class="cell-letter" x="50%" y="50%" dy="0.35em">n</text>
+                    <!-- <foreignObject width="50" height="50" x="50%" y="50%" dy="0.35em" onclick="changeUsername()">
+                        <input id="input" class="cell-letter" type="text" value="n" />
+                    </foreignObject> -->
             </svg>
             <svg class="hive-cell outer" viewBox="0 0 120 103.92304845413263" data-testid="hive-cell">
                 <polygon class="cell-fill"
@@ -58,5 +61,16 @@
         
 
     <script src="./js/solver.js"></script>
+    <script>
+        window.addEventListener("keydown", e => {
+                e.preventDefault()
+                if(65 <= e.keyCode <= 90) {
+                    textNode = window.getSelection().anchorNode
+                    console.log(window.getSelection())
+                    textNode.textContent = e.key
+                }
+            }
+        )
+    </script>
 </body>
 </html>
