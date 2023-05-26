@@ -31,7 +31,9 @@ function filterWords(allLetters, centerLetter, wordList) {
     return filteredList
 }
 
-console.log(filterWords(["H", "O", "B", "R", "I", "T", "N"], "N", wordList))
+
+// needs to run after the word list is loaded, currently running too early
+// console.log(filterWords(["H", "O", "B", "R", "I", "T", "N"], "N", wordList))
 
 // example for 5/25/23
 // Letters -> ["H", "O", "B", "R", "I", "T", "N"], center letter is "N"
@@ -66,3 +68,25 @@ console.log(filterWords(["H", "O", "B", "R", "I", "T", "N"], "N", wordList))
 
 // Words that worked -> IRON, NOON, ONION, RHINO, TORN, TRITON
 // Might need a better word list, or different forms of the words expounded
+
+// connect with frontend
+function solveUserPuzzle() {
+    // get text input from hive
+    allLetters = Array.from(document.querySelectorAll("text")).map(a => a.textContent.toUpperCase())
+    centerLetter = allLetters[0]
+
+    results = filterWords(allLetters, centerLetter, wordList)
+
+    results_holder = document.querySelector("#results")
+
+    while(results_holder.children.length > 0) {
+        results_holder.removeChild(results_holder.firstElementChild);
+    }
+
+    results.forEach(word => {
+        const currElem = document.createElement("p");
+        currElem.textContent = word;
+        results_holder.appendChild(currElem);
+    })
+
+}
